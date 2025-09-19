@@ -1,0 +1,33 @@
+import numpy as np
+import pandas as pd
+from thermo import Chemical
+
+T = 300     #kelvin
+P = 1000000  #Pa
+
+h2o2 = Chemical('hydrogen peroxide', T=T, P=P)
+
+molecular_weight = 34.0147/1000  #kg/mol
+
+Phase = h2o2.phase
+Density = h2o2.rho          #kg/m3
+Viscosity = h2o2.mu         #Pa.s
+SpecificHeat = h2o2.Cp      #J/Kg-K
+ThermalConductivity = h2o2.k    #W/m-K
+SaturationTemperature = h2o2.Tsat(P)   #K
+VaporPressure = h2o2.Psat       #Pa
+VaporizationEnthalpy = h2o2.Hvapm/molecular_weight   #J/Kg
+CriticalTemperature = h2o2.Tc   #K
+
+print("temperature:", T)
+print("pressure: ", P)
+
+print("phase: ", Phase)
+print("density: ", Density)
+print("viscosity: ", Viscosity)
+print("Cp: ", SpecificHeat)
+print("k: ", ThermalConductivity)
+print("Tsat: ", SaturationTemperature)
+print("Pvap: ", VaporPressure)
+print("Hvap: ", VaporizationEnthalpy)
+print("Critical Temperature: ", CriticalTemperature)
